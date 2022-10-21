@@ -1,0 +1,5 @@
+export const MAIN_ROUTE = '/main'
+export const ADMIN_ROUTE = '/admin'
+export const POST_ROUTE = '/post'
+export const REGISTRATION_ROUTE = '/registration'
+export const USER_ROUTE = '/user'
