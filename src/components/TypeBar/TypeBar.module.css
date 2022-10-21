@@ -1,0 +1,10 @@
+.typeBar {
+    display: flex;
+}
+
+.typeItem{
+    border: 1px solid turquoise;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+}
