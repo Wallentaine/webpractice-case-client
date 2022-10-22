@@ -1,5 +1,7 @@
 import {$authHost, $host} from './index'
 
+
+// @post {title, text, userId, typeID, img}
 export const addNewPost = async (post) => {
     const {data} = await $authHost.post('api/post/', {post})
     return data
@@ -20,6 +22,7 @@ export const fetchAllPosts = async (typeId, limit, page) => {
     return data
 }
 
+// @post {id, title, text, typeID}
 export const updatePost = async (post) => {
     const {data} = await $authHost.put('api/post/', {post})
     return data
