@@ -1,6 +1,5 @@
 import MainPage from "./pages/MainPage";
-import {
-    APPEAL_RECTOR_ROUTE, CREATE_ARTICLE_ROUTE,
+import {CREATE_ARTICLE_ROUTE,
     MAIN_ROUTE,
     POST_ROUTE,
     REGISTRATION_ROUTE,
@@ -13,6 +12,7 @@ import SchedulePage from "./pages/SchedulePage";
 import UserPage from "./pages/UserPage";
 import UserListPage from "./pages/UserListPage";
 import CreateArticlePage from "./pages/CreateArticlePage";
+import ArticlePage from "./pages/ArticlePage";
 
 
 export const publicRoutes = [
@@ -22,7 +22,7 @@ export const publicRoutes = [
     },
     {
         path: POST_ROUTE + '/:id',
-        Component: PostPage
+        Component: ArticlePage
     },
     {
         path: REGISTRATION_ROUTE,
