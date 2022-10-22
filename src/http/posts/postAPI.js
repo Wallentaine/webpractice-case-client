@@ -22,7 +22,7 @@ export const fetchAllPosts = async (typeId, limit, page) => {
     return data
 }
 
-// @post {id, title, text, typeID}
+// @post {id, title, text, typeID, img}
 export const updatePost = async (post) => {
     const {data} = await $authHost.put('api/post/', {post})
     return data
