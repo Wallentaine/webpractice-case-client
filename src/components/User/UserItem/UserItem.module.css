@@ -1,0 +1,27 @@
+.userItem{
+    display: flex;
+    width: 80%;
+    margin: 10px;
+}
+
+.userImg{
+}
+
+.userImg img{
+    width: 140px;
+    height: 100%
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    background-color: #999999;
+}
+
+.infoItem{
+    font-family: 'Verdana';
+    font-size: 20px;
+    padding: 20px;
+}

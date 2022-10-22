@@ -1,0 +1,25 @@
+.todayPostList{
+    display: flex;
+    overflow-x: scroll;
+    width: 96%;
+}
+
+.todayPostList::-webkit-scrollbar{
+    width: 0.7rem;
+
+}
+
+.todayPostList::-webkit-scrollbar-track{
+    background-color: white;
+    border-radius: 10px;
+    margin-block: 6px;
+}
+
+.todayPostList::-webkit-scrollbar-thumb{
+    background-color: rgba(153, 153, 153, 0.54);
+    border-radius: 10px;
+    border: 0.2rem solid white;
+}
+.todayPostList::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(153, 153, 153, 0.8);
+}
