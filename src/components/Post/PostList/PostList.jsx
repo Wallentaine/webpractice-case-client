@@ -1,16 +1,12 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import classes from './PostList.module.css'
 import PostItem from "../PostItem/PostItem";
-import {Context} from "../../../index";
 
-const PostList = () => {
-
-    const {post} = useContext(Context)
-
+const PostList = ({posts, ...props}) => {
 
     return (
-        <div className={classes.postList}>
-            {post.posts.map(post =>
+        <div className={classes.postList} {...props}>
+            {posts.map(post =>
                 <PostItem key={post.id} post={post}/>
             )}
         </div>

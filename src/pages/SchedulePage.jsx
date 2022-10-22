@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AdminPage = () => {
+const SchedulePage = () => {
     return (
         <div>
-            AdminPage
+            SCHEDULE
         </div>
     );
 };
 
-export default AdminPage;
+export default SchedulePage;

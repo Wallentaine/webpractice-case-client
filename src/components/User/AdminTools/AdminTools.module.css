@@ -1,0 +1,33 @@
+.adminTools{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    flex-direction: column;
+    font-size: 1.5rem;
+    justify-content: space-between;
+}
+
+.link{
+    padding: 15px 0;
+}
+
+.link span {
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.link span:hover{
+
+    color: #333333;
+}
+
+.adminInput{
+    margin-right: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.adminInput span{
+    width: 300px;
+}

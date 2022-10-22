@@ -1,0 +1,5 @@
+.navItem{
+    display: flex;
+    padding:10px;
+    align-self: center;
+}

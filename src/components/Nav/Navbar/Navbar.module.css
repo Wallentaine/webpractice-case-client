@@ -1,4 +1,15 @@
 .navbar{
-    background-color: blue;
+    display: flex;
+    align-items: center;
+    background-color: olivedrab;
     height: 70px;
+    justify-content: space-between;
+}
+
+.logo{
+    margin-left: 20px;
+}
+
+.navPanel{
+    display: flex;
 }
