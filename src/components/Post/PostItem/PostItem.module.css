@@ -49,13 +49,18 @@
 
 .footer{
     width: calc(100% - 40px);
-    font-family: 'Courier New';
+
     font-style: normal;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    font-size: 14px;
     position: absolute;
     bottom: 10px;
 }
 
+.createdAt{
+    margin-top: 10px;
+    font-size: 18px;
+    font-family: "Courier New";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
