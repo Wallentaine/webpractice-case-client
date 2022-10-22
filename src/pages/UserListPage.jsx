@@ -1,12 +1,6 @@
 import React, {useMemo, useState} from 'react';
-import DropdownMenu from "../components/UI/DropdownMenu/DropdownMenu";
-import {useDropdown} from "../hooks/useDropdown";
-import svgUp from "../assets/icon-arrow-up.svg";
-import svgDown from "../assets/icon-arrow-down.svg";
-import DropdownItem from "../components/UI/DropdownMenu/DropdownItem";
 import UserList from "../components/User/UserList/UserList";
 import Input from "../components/UI/Inputs/Input/Input";
-import Search from "../components/UI/Search/Search";
 
 const UserListPage = () => {
 

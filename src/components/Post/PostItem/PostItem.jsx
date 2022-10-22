@@ -21,17 +21,24 @@ const PostItem = ({post}) => {
                 <div className={classes.text} dangerouslySetInnerHTML={{__html: post.text}}>
                 </div>
 
-                <div>
-                    {post.type}
-                </div>
+
 
                 <div className={classes.footer}>
+
                     <div>
-                        {post.userName}
+                        {post.type}
                     </div>
-                    <div >
-                        {post.createdAt}
+
+                    <div className={classes.createdAt}>
+                        <div>
+                            {post.userName}
+                        </div>
+                        <div >
+                            {post.createdAt}
+                        </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
