@@ -82,16 +82,9 @@ export default class PostStore {
             },
         ]
 
-        this._types = [
-            {id: 0, name: 'Все новости'},
-            {id: 1, name: 'Жизнь вуза'},
-            {id: 2, name: 'Учебные новости'},
-            {id: 3, name: 'Социальные новости'},
-            {id: 4, name: 'Для преподавателей'},
-            {id: 5, name: 'Для персонала'},
-        ]
+        this._types = []
 
-        this._selectedType = {id: 0, name: 'Все новости'}
+        this._selectedType = {}
 
 
         makeAutoObservable(this)

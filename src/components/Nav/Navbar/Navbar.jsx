@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import classes from './Navbar.module.css'
 import Modal from "../../UI/Modal/Modal";
 import AuthForm from "../../Forms/AuthForm/AuthForm";
@@ -7,9 +7,18 @@ import {NavLink} from "react-router-dom";
 import {APPEAL_RECTOR_ROUTE, MAIN_ROUTE, SCHEDULE_ROUTE, USER_ROUTE} from "../../../utils/consts";
 import NavItem from "../NavItem/NavItem";
 import AppealForm from "../../Forms/AppealForm/AppealForm";
+import {Context} from "../../../index";
+import {observer} from "mobx-react-lite";
 
 
-const Navbar = (props) => {
+const Navbar = observer((props) => {
+
+    const logOut = () => {
+        user.setIsAuth(false)
+        localStorage.removeItem('token')
+    }
+
+    const {user} = useContext(Context)
 
     const [authActive, setAuthActive] = useState(false)
     const [appealActive, setAppealActive] = useState(false)
@@ -35,9 +44,17 @@ const Navbar = (props) => {
                 <NavItem>
                     <span onClick={() => setAppealActive(true)}>Обращение к ректору</span>
                 </NavItem>
-                <NavItem>
-                    <Button onClick={() => setAuthActive(true)}>Авторизация</Button>
-                </NavItem>
+                {
+                    user.isAuth ?
+                        <NavItem>
+                        <Button onClick={() => logOut()}>Выйти</Button>
+                    </NavItem> :
+                        <NavItem>
+                            <Button onClick={() => setAuthActive(true)}>Авторизация</Button>
+                        </NavItem>
+
+                }
+
 
             </div>
 
@@ -56,6 +73,6 @@ const Navbar = (props) => {
             </Modal>
         </nav>
     );
-};
+});
 
 export default Navbar;
