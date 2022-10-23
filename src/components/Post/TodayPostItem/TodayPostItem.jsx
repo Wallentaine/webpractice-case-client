@@ -9,7 +9,7 @@ const TodayPostItem = ({post}) => {
 
     return (
         <div className={classes.todayPostItem} onClick={() => navigate(POST_ROUTE + '/' + post.id)}>
-
+            <img src={process.env.REACT_APP_API_URL + post.img} alt=""/>
             <div className={classes.preview}>
                 {post.title}
             </div>

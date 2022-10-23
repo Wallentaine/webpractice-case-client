@@ -4,26 +4,45 @@ import {useParams} from "react-router-dom";
 import {useContext} from "react";
 import {Context} from "../index";
 import Button from "../components/UI/Button/Button";
+import {useEffect, useState} from "react";
+import {useFetching} from "../hooks/useFetching";
+import {fetchOnePost} from "../http/posts/postAPI";
+import Loading from "../components/UI/Loading/Loading";
 
 const ArticlePage = () => {
 
-    const {post} = useContext(Context)
 
     const {id} = useParams()
 
-    const chosenPost = post.posts.find((post) => post.id === parseInt(id))
+    const [post, setPost] = useState({})
+
+    const[fetchPost, isPostLoading, postErr] = useFetching( async() => {
+        await fetchOnePost(id).then(data => {
+            console.log(data)
+            setPost(data)
+        })
+    })
+
+    useEffect(() => {
+        fetchPost()
+    }, [])
+
+    const postDate = new Date(post.createdAt).toLocaleDateString()
+
+    if (isPostLoading)
+        return (<Loading isLoading={isPostLoading}/>)
+
 
     return (
         <div className={"ArticlePage"}>
-            <div className={"ArticleType"}>{chosenPost.type}</div>
-            <div className={"ArticleTitle"}>{chosenPost.title}</div>
+            <div className={"ArticleType"}>{post?.type?.title}</div>
+            <div className={"ArticleTitle"}>{post?.title}</div>
             <div className={"ArticleInfo"}>
-                <div className={"ArticleAuthor"}>Автор: {chosenPost.userName}</div>
-                <div className={"ArticleDate"}>{chosenPost.createdAt}</div>
+                <div className={"ArticleDate"}>{postDate}</div>
             </div>
-            <img src={img}/>
+            <img src={process.env.REACT_APP_API_URL + post.img}/>
             <div className={"ArticleText"}>
-                {chosenPost.text}
+                {post?.text}
             </div>
             <div className='editingButton'>
                 <Button> Редактировать </Button>

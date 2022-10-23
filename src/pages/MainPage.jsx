@@ -9,7 +9,7 @@ import {observer} from "mobx-react-lite";
 import svgDown from '../assets/icon-arrow-down.svg'
 import svgUp from '../assets/icon-arrow-up.svg'
 import {useFetching} from "../hooks/useFetching";
-import {fetchAllPosts} from "../http/posts/postAPI";
+import {fetchAllPosts, fetchLatestPosts} from "../http/posts/postAPI";
 import {fetchAllTypes} from "../http/posts/typeAPI";
 import Loading from "../components/UI/Loading/Loading";
 
@@ -29,17 +29,24 @@ const MainPage = observer( () => {
         post.setTypes([{id: 0, title: 'Все новости'}, ...types])
     })
 
+    const [fetchNewPosts, isNewPostsLoading, newPostsError] = useFetching(async () => {
+        await fetchLatestPosts(5).then((data) => {
+            post.setTodayPosts(data)
+        })
+    })
+
     useEffect(() => {
         fetchTypes()
+        fetchNewPosts()
     }, [])
 
     useEffect(() => {
         fetchPosts()
     }, [post.selectedType])
 
-    if (isLoadingTypes || isLoadingPosts)
+    if (isLoadingTypes || isLoadingPosts || isNewPostsLoading)
 
-        return (<Loading isLoading={(isLoadingTypes || isLoadingPosts)}/>)
+        return (<Loading isLoading={(isLoadingTypes || isLoadingPosts || isNewPostsLoading)}/>)
 
     return (
         <div className='page'>
