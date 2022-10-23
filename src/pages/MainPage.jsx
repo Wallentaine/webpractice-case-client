@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import PostList from "../components/Post/PostList/PostList";
 import {Context} from "../index";
 import TodayPostList from "../components/Post/TodayPostList/TodayPostList";
@@ -8,11 +8,31 @@ import DropdownItem from "../components/UI/DropdownMenu/DropdownItem";
 import {observer} from "mobx-react-lite";
 import svgDown from '../assets/icon-arrow-down.svg'
 import svgUp from '../assets/icon-arrow-up.svg'
+import {useFetching} from "../hooks/useFetching";
+import {fetchAllPosts} from "../http/posts/postAPI";
+import {fetchAllTypes} from "../http/posts/typeAPI";
 
 const MainPage = observer( () => {
 
     const {post} = useContext(Context)
     const [openTypes, setOpenTypes, typesRef] = useDropdown()
+    const [fetchPosts, isLoadingPosts, postsError] = useFetching(async () => {
+        const posts = await fetchAllPosts(post.selectedType.id)
+    })
+
+    const [fetchTypes, isLoadingTypes, typesError] = useFetching(async () => {
+        const types = await fetchAllTypes()
+        post.setTypes(types)
+        console.log(post.types)
+    })
+
+    useEffect(() => {
+        fetchTypes()
+    }, [])
+
+    useEffect(() => {
+
+    }, [])
 
     return (
         <div className='page'>
