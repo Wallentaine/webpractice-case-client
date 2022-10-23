@@ -36,7 +36,18 @@ export const authRoutes = [
         path: SCHEDULE_ROUTE,
         Component: SchedulePage
     },
+    {
+        path: USER_ROUTE,
+        Component: UserPage
+    },
 
+]
+
+export const workerRoutes = [
+    {
+        path: CREATE_ARTICLE_ROUTE,
+        Component: CreateArticlePage
+    },
 ]
 
 export const adminRoutes = [
@@ -48,10 +59,7 @@ export const adminRoutes = [
         path: USER_LIST_ROUTE,
         Component: UserListPage
     },
-    {
-        path: CREATE_ARTICLE_ROUTE,
-        Component: CreateArticlePage
-    },
+
 ]
 
 

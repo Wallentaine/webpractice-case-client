@@ -36,7 +36,7 @@ const RegistrationForm = () => {
         const userData = await registration(
             email,
             password,
-            'ADMIN',
+            role,
             firstname,
             middlename,
             lastname,

@@ -23,7 +23,8 @@ const MainPage = observer( () => {
 
     const [fetchTypes, isLoadingTypes, typesError] = useFetching(async () => {
         const types = await fetchAllTypes()
-        post.setTypes(types)
+        post.setTypes([{id: 0, title: 'Все новости'}, ...types])
+        post.setSelectedType({id: 0, title: 'Все новости'})
     })
 
     useEffect(() => {
@@ -50,7 +51,7 @@ const MainPage = observer( () => {
                     <div className='dropdownTitle'
                          onClick={() => setOpenTypes(!openTypes)}
                     >
-                        {post.selectedType.name} {openTypes ? <img src={svgUp}/> : <img src={svgDown}/>}
+                        {post.selectedType.title} {openTypes ? <img src={svgUp}/> : <img src={svgDown}/>}
                     </div>
 
                     <DropdownMenu
@@ -66,7 +67,7 @@ const MainPage = observer( () => {
                                     setOpenTypes(false)
                             }}
                             >
-                                {type.name}
+                                {type.title}
                             </DropdownItem>
                         )}
                     </DropdownMenu>

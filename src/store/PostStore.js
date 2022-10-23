@@ -84,7 +84,7 @@ export default class PostStore {
 
         this._types = []
 
-        this._selectedType = {}
+        this._selectedType = {id: 0, title: 'Все новости'}
 
 
         makeAutoObservable(this)

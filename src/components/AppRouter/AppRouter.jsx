@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom'
-import {adminRoutes, authRoutes, publicRoutes} from "../../routes";
+import {adminRoutes, authRoutes, publicRoutes, workerRoutes} from "../../routes";
 import {MAIN_ROUTE} from "../../utils/consts";
 import classes from './AppRouter.module.css'
 import {Context} from "../../index";
@@ -22,7 +22,11 @@ const AppRouter = observer(() => {
                 {user.user.role === 'ADMIN' && adminRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} element={<Component/>}/>
                 )}
-
+                {
+                    user.user.role === "WORKER" && workerRoutes.map(({path, Component}) =>
+                        <Route key={path} path={path} element={<Component/>}/>
+                    )}
+                }
                 <Route path="*" element={<Navigate to={MAIN_ROUTE}/>}></Route>
             </Routes>
         </div>
