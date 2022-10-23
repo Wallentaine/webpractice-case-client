@@ -14,7 +14,7 @@ const PostItem = ({post}) => {
     return (
         <div className={classes.postItem} onClick={() => navigate(POST_ROUTE + '/' + post.id)}>
             <div className={classes.imgBlock}>
-                <img src={image} alt=""/>
+                <img src={process.env.REACT_APP_API_URL + post.img} alt=""/>
             </div>
             <div className={classes.content}>
                 <div className={classes.title}>

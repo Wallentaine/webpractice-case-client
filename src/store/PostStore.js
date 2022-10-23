@@ -6,53 +6,7 @@ export default class PostStore {
 
         this._posts = []
 
-        this.todayPosts = [
-            {
-                id: 1,
-                img: '',
-                title: 'Хорошая новость',
-                userName: 'Елена Головач',
-                text: 'Стипендия выплачивается теперь независисмо от успеваемости',
-                type: 'Социальная жизнь',
-                createdAt: '21.12.1488'
-            },
-            {
-                id: 2,
-                img: '',
-                title: 'Хорошая новость',
-                userName: 'Елена Головач',
-                text: 'Стипендия выплачивается теперь независисмо от успеваемости',
-                type: 'Социальная жизнь',
-                createdAt: '21.12.1488'
-            },
-            {
-                id: 3,
-                img: '',
-                title: 'Хорошая новость',
-                userName: 'Елена Головач',
-                text: 'Стипендия выплачивается теперь независисмо от успеваемости',
-                type: 'Социальная жизнь',
-                createdAt: '21.12.1488'
-            },
-            {
-                id: 4,
-                img: '',
-                title: 'Хорошая новость',
-                userName: 'Елена Головач',
-                text: 'Стипендия выплачивается теперь независисмо от успеваемости',
-                type: 'Социальная жизнь',
-                createdAt: '21.12.1488'
-            },
-            {
-                id: 5,
-                img: '',
-                title: 'Хорошая новость',
-                userName: 'Елена Головач',
-                text: 'Стипендия выплачивается теперь независисмо от успеваемости',
-                type: 'Социальная жизнь',
-                createdAt: '21.12.1488'
-            },
-        ]
+        this._todayPosts = []
 
         this._types = []
 
@@ -70,6 +24,10 @@ export default class PostStore {
         this._types = types
     }
 
+    setTodayPosts(todayPosts){
+        this._todayPosts = todayPosts
+    }
+
     setSelectedType(type){
         this._selectedType = type
     }
@@ -84,6 +42,10 @@ export default class PostStore {
 
     get types(){
         return this._types
+    }
+
+    get todayPosts(){
+        return this._todayPosts
     }
 
 }

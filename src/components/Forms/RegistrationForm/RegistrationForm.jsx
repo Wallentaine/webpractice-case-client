@@ -11,9 +11,15 @@ import {Context} from "../../../index";
 import {useScrollUp} from "../../../hooks/useScrollUp";
 import {MAIN_ROUTE} from "../../../utils/consts";
 import Loading from "../../UI/Loading/Loading";
+import {fetchGroups} from "../../../http/schedule/groupAPI";
+import svgUp from "../../../assets/icon-arrow-up.svg";
+import svgDown from "../../../assets/icon-arrow-down.svg";
+import DropdownMenu from "../../UI/DropdownMenu/DropdownMenu";
+import DropdownItem from "../../UI/DropdownMenu/DropdownItem";
 
 const RegistrationForm = () => {
 
+    const [openTypes, setOpenTypes, typesRef] = useDropdown()
     const {user} = useContext(Context)
     const navigate = useScrollUp()
     const roles = [
@@ -31,6 +37,8 @@ const RegistrationForm = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [openRoles, setOpenRoles, rolesCloseRef] = useDropdown()
+    const [groups, setGroups] = useState([])
+    const [selectedGroup, setSelectedGroup] = useState({id: 0, name: 'Выберите  группу'})
 
     const [registrationUser, isRegistrationLoading, registrationError] = useFetching(async () =>{
         const userData = await registration(
@@ -42,13 +50,30 @@ const RegistrationForm = () => {
             lastname,
             birthDate,
             profession,
-            organization
+            organization,
+            selectedGroup.id
         )
         user.setUser(userData)
         user.setIsAuth(true)
         navigate(MAIN_ROUTE)
     })
 
+
+    const [fetchAllGroups, isGroupLoads, groupErr] = useFetching(async () => {
+        await fetchGroups().then(data => {
+            console.log(data)
+            setGroups(data)
+        })
+    })
+
+    useEffect(() => {
+        fetchAllGroups()
+    }, [])
+
+    if (isGroupLoads)
+        return (
+            <Loading isLoading={isGroupLoads}/>
+        )
 
     return (
         <Form>
@@ -125,12 +150,32 @@ const RegistrationForm = () => {
             {role === 'STUDENT'  &&
                 <div style={{alignSelf: 'flex-start'}}>
                     <h2  style={{marginTop: 20, marginBottom: 20}}>Выберите группу</h2>
-                    <Select
-                        defaultValue='Выберите роль'
-                        options={roles}
-                        value={role}
-                        setValue={setRole}
-                    />
+                    <div ref={typesRef}>
+
+                        <div className='dropdownTitle'
+                             onClick={() => setOpenTypes(!openTypes)}
+                        >
+                            {selectedGroup.name} {openTypes ? <img src={svgUp}/> : <img src={svgDown}/>}
+                        </div>
+
+                        <DropdownMenu
+                            open={openTypes}
+                            setOpen={setOpenTypes}
+                            ref={typesRef}
+                        >
+                            {groups.map((group) =>
+                                <DropdownItem
+                                    key={group.id}
+                                    onClick={() => {
+                                        setSelectedGroup(group)
+                                        setOpenTypes(false)
+                                    }}
+                                >
+                                    {group.name}
+                                </DropdownItem>
+                            )}
+                        </DropdownMenu>
+                    </div>
                 </div>
 
             }

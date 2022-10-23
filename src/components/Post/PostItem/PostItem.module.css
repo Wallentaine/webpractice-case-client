@@ -35,7 +35,7 @@
     margin-bottom: 30px;
     font-style: normal;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 30px;
     display: flex;
     align-items: center;
 
@@ -44,7 +44,9 @@
 .text{
     font-family: 'Verdana';
     font-style: normal;
-    font-size: 24px;
+    font-size: 18px;
+    height: 25%;
+    overflow-y: hidden;
 }
 
 .footer{

@@ -1,32 +1,28 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Context} from "../index";
 import {useParams} from "react-router-dom";
+import {useFetching} from "../hooks/useFetching";
+import {fetchOnePost} from "../http/posts/postAPI";
+import Loading from "../components/UI/Loading/Loading";
 
 const PostPage = () => {
-
-    const {post} = useContext(Context)
-
-    const {id} = useParams()
-
-    const chosenPost = post.posts.find((post) => post.id === parseInt(id))
 
 
     return (
         <div>
             <div>
-                {chosenPost.type}
             </div>
             <div className='head'>
-                {chosenPost.userName} {chosenPost.createdAt}
+                 {postDate}
             </div>
             <div className="title">
-                {chosenPost.title}
+                {post.title}
             </div>
             <div className="img">
-                {chosenPost.img}
-            </div>
-            <div dangerouslySetInnerHTML={{__html: chosenPost.text}}>
 
+            </div>
+            <div >
+                {post.text}
             </div>
         </div>
     );
