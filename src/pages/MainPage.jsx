@@ -17,14 +17,16 @@ const MainPage = observer( () => {
 
     const {post} = useContext(Context)
     const [openTypes, setOpenTypes, typesRef] = useDropdown()
+
     const [fetchPosts, isLoadingPosts, postsError] = useFetching(async () => {
-        const posts = await fetchAllPosts(post.selectedType.id)
+        if (post.selectedType.id === 0)
+        await fetchAllPosts().then(data => post.setPosts(data.rows))
+        else await fetchAllPosts(post.selectedType.id).then(data => post.setPosts(data.rows))
     })
 
     const [fetchTypes, isLoadingTypes, typesError] = useFetching(async () => {
         const types = await fetchAllTypes()
         post.setTypes([{id: 0, title: 'Все новости'}, ...types])
-        post.setSelectedType({id: 0, title: 'Все новости'})
     })
 
     useEffect(() => {
@@ -32,8 +34,12 @@ const MainPage = observer( () => {
     }, [])
 
     useEffect(() => {
+        fetchPosts()
+    }, [post.selectedType])
 
-    }, [])
+    if (isLoadingTypes || isLoadingPosts)
+
+        return (<Loading isLoading={(isLoadingTypes || isLoadingPosts)}/>)
 
     return (
         <div className='page'>

@@ -10,6 +10,7 @@ import {useFetching} from "../../../hooks/useFetching";
 import Loading from "../../UI/Loading/Loading";
 import {useContext} from "react";
 import {Context} from "../../../index";
+import {addNewGroup} from "../../../http/schedule/groupAPI";
 
 const AdminTools = () => {
 
@@ -23,9 +24,15 @@ const AdminTools = () => {
         await addNewType(category)
     })
 
+    const [addStudentGroup, isGroupLoading, groupError] = useFetching( async () => {
+        await addNewGroup(group).then(data => {
+            console.log(data)})
+    })
+
     return (
         <div className={classes.adminTools}>
             <Loading isLoading={isTypeLoading}/>
+            <Loading isLoading={isGroupLoading}/>
             <div>
 
                 {user.user.role === "WORKER" &&
@@ -68,7 +75,11 @@ const AdminTools = () => {
                                 style={{width: 400}}
                                 title={'Название группы'}
                             />
-                            <Button style={{width: 200 ,marginLeft:20}}>Добавить</Button>
+                            <Button style={{width: 200 ,marginLeft:20}}
+                                    onClick={() => addStudentGroup()}
+                            >
+                                Добавить
+                            </Button>
                         </div>
                         <div className={classes.adminInput}>
                             <span>Добавить расписание</span>
