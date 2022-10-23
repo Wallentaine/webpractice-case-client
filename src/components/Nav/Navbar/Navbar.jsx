@@ -10,7 +10,7 @@ import AppealForm from "../../Forms/AppealForm/AppealForm";
 import {Context} from "../../../index";
 import {observer} from "mobx-react-lite";
 import Loading from "../../UI/Loading/Loading";
-
+import logo from '../../../assets/logo.svg'
 
 const Navbar = observer(({isCheckLoading,...props}) => {
 
@@ -31,7 +31,9 @@ const Navbar = observer(({isCheckLoading,...props}) => {
             <Loading isLoading={isCheckLoading}/>
 
             <div className={classes.logo}>
-                Logo
+                <NavLink to={MAIN_ROUTE}>
+                    <img src={logo} alt=""/>
+                </NavLink>
             </div>
 
             <div className={classes.navPanel}>

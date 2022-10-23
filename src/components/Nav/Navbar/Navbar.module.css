@@ -1,9 +1,14 @@
 .navbar{
     display: flex;
     align-items: center;
-    background-color: olivedrab;
+    background-color: #354747;
     height: 70px;
     justify-content: space-between;
+    color: white;
+}
+.navbar a {
+    text-decoration: none;
+    color: white;
 }
 
 .logo{

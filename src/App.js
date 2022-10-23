@@ -35,8 +35,7 @@ const App = observer( () => {
     <div className="App">
         <BrowserRouter>
             <Navbar isCheckLoading={load}/>
-           <AppRouter/>
-            <Footer/>
+            <AppRouter/>
         </BrowserRouter>
 
     </div>
