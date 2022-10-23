@@ -9,12 +9,14 @@ import NavItem from "../NavItem/NavItem";
 import AppealForm from "../../Forms/AppealForm/AppealForm";
 import {Context} from "../../../index";
 import {observer} from "mobx-react-lite";
+import Loading from "../../UI/Loading/Loading";
 
 
-const Navbar = observer((props) => {
+const Navbar = observer(({isCheckLoading,...props}) => {
 
     const logOut = () => {
         user.setIsAuth(false)
+        user.setUser({})
         localStorage.removeItem('token')
     }
 
@@ -25,6 +27,8 @@ const Navbar = observer((props) => {
 
     return (
         <nav className={classes.navbar}>
+
+            <Loading isLoading={isCheckLoading}/>
 
             <div className={classes.logo}>
                 Logo
@@ -71,6 +75,7 @@ const Navbar = observer((props) => {
             >
                 <AppealForm setModalActive={setAuthActive}/>
             </Modal>
+
         </nav>
     );
 });

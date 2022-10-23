@@ -1,17 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import FileInput from "../components/UI/Inputs/FileInput/FileInput";
 import Input from "../components/UI/Inputs/Input/Input";
 import TextArea from "../components/UI/Inputs/TextArea/TextArea";
 import Button from "../components/UI/Button/Button";
-import {addNewPost} from "../http/posts/postAPI";
 
-const CreateArticlePage = () => {
-
-
-    const [img, setImg] = useState({})
-    const [title, setTitle] = useState('')
-    const [text, setText] = useState('')
-
+const EditArticlePage = () => {
 
 
     return (
@@ -32,11 +25,11 @@ const CreateArticlePage = () => {
                 />
 
                 <Input
-                title={'Название статьи'}
+                    title={'Название статьи'}
                 />
                 <TextArea
-                title={'Текст статьи'}
-                style={{width: 700, height: 300}}
+                    title={'Текст статьи'}
+                    style={{width: 700, height: 300}}
                 />
 
                 <Button>
@@ -48,4 +41,4 @@ const CreateArticlePage = () => {
     );
 };
 
-export default CreateArticlePage;
+export default EditArticlePage;

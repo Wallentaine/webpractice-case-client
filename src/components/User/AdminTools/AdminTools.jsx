@@ -5,6 +5,9 @@ import Button from "../../UI/Button/Button";
 import {CREATE_ARTICLE_ROUTE, USER_LIST_ROUTE} from "../../../utils/consts";
 import {useScrollUp} from "../../../hooks/useScrollUp";
 import FileInput from "../../UI/Inputs/FileInput/FileInput";
+import {addNewType} from "../../../http/posts/typeAPI";
+import {useFetching} from "../../../hooks/useFetching";
+import Loading from "../../UI/Loading/Loading";
 
 const AdminTools = () => {
 
@@ -14,8 +17,14 @@ const AdminTools = () => {
     const [group, setGroup] = useState('')
     const [schedule, setSchedule] = useState('')
 
+    const [addType, isTypeLoading, typeError] = useFetching(async () => {
+        await addNewType(category).then((data) => {
+            console.log(data)})
+    })
+
     return (
         <div className={classes.adminTools}>
+            <Loading isLoading={isTypeLoading}/>
             <div>
 
                 <div className={classes.link}>
@@ -39,7 +48,12 @@ const AdminTools = () => {
                         style={{width: 400}}
                         title={'Название категории'}
                     />
-                    <Button style={{width: 200 ,marginLeft:20}}>Добавить</Button>
+                    <Button
+                        style={{width: 200 ,marginLeft:20}}
+                        onClick={() => addType()}
+                    >
+                        Добавить
+                    </Button>
                 </div>
                 <div className={classes.adminInput}>
                     <span>Добавить группу</span>
