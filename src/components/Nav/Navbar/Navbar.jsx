@@ -33,7 +33,7 @@ const Navbar = (props) => {
                     <NavLink to={USER_ROUTE}>Профиль</NavLink>
                 </NavItem>
                 <NavItem>
-                    <span onClick={() => setAppealActive(true)}>Обращение к ректору</span>
+                    <span className="rectorApeal" onClick={() => setAppealActive(true)}>Обращение к ректору</span>
                 </NavItem>
                 <NavItem>
                     <Button onClick={() => setAuthActive(true)}>Авторизация</Button>

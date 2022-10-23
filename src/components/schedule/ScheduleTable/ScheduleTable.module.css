@@ -1,0 +1,31 @@
+.scheduleTable {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border: 1px solid black;
+}
+
+thead {
+    display: flex;
+    padding: 8px 16px;
+}
+
+tr {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 10px;
+    text-align: center;
+}
+
+th {
+
+}
+
+td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

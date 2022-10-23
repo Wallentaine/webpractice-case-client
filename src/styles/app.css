@@ -153,4 +153,6 @@
     align-self: flex-end;
 }
 
-
+.rectorApeal{
+    cursor: pointer;
+}
