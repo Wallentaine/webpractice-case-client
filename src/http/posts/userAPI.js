@@ -12,19 +12,18 @@ export const registration = async(email,
                                   organization,
                                   groupId) => {
 
-    const {data} = await $host.post('api/user/registration',
-    {
-        email,
-        password,
-        role,
-        firstName,
-        middleName,
-        lastName,
-        birthDate,
-        profession,
-        organization,
-        groupId
-    })
+    const formData = new FormData()
+    formData.append("email", email)
+    formData.append("password", password)
+    formData.append("role", role)
+    formData.append("firstName", firstName)
+    formData.append("middleName", middleName)
+    formData.append("lastName", lastName)
+    formData.append("birthDate", birthDate)
+    formData.append("profession", profession)
+    formData.append("organization", organization)
+    formData.append("groupId", groupId)
+    const {data} = await $host.post('api/user/registration', formData)
     localStorage.setItem('token', data.token)
     return jwt_decode(data.token)
 }

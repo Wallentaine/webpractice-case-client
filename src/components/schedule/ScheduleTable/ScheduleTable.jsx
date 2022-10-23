@@ -64,6 +64,7 @@ const ScheduleTable = observer(() => {
                 return data
             }).then((data) => {
                 const fullName = data.lastName + " " + data.firstName + " " + data.middleName
+                console.log(fullName)
                 fetchTeacherSchedule(fullName).then((data) => {
                     setSchedules(data)
                 })
