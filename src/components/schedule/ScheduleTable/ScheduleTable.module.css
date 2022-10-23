@@ -1,31 +1,34 @@
 .scheduleTable {
     margin: 0;
-    padding: 0;
+    padding: 20px;
+    width: 100%;
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: repeat(7, 2fr);
 }
 
-table {
-    border: 1px solid black;
-}
-
-thead {
-    display: flex;
+.dayItem {
     padding: 8px 16px;
 }
 
-tr {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 10px;
-    text-align: center;
-}
-
-th {
-
-}
-
-td {
+.dayTitle {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
+}
+
+.scheduleItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.scheduleColor1 {
+
+}
+
+.scheduleColor2 {
+
 }
