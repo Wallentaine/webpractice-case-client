@@ -6,13 +6,13 @@ import {observer} from "mobx-react-lite";
 
 const UserPage = observer(() => {
 
-    const {user} = useContext(Context)
+
     return (
         <div className="userPage">
             <UserInfo/>
-            {user.user.role === 'ADMIN' &&
+
                 <AdminTools/>
-            }
+
 
         </div>
     );
