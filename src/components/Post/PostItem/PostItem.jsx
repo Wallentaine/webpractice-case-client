@@ -9,6 +9,8 @@ const PostItem = ({post}) => {
 
     const navigate = useScrollUp()
 
+    const postDate = new Date(post.createdAt).toLocaleDateString()
+
     return (
         <div className={classes.postItem} onClick={() => navigate(POST_ROUTE + '/' + post.id)}>
             <div className={classes.imgBlock}>
@@ -18,7 +20,8 @@ const PostItem = ({post}) => {
                 <div className={classes.title}>
                     {post.title}
                 </div>
-                <div className={classes.text} dangerouslySetInnerHTML={{__html: post.text}}>
+                <div className={classes.text}>
+                    {post.text}
                 </div>
 
 
@@ -26,15 +29,13 @@ const PostItem = ({post}) => {
                 <div className={classes.footer}>
 
                     <div>
-                        {post.type}
+                        {post.type.title}
                     </div>
 
                     <div className={classes.createdAt}>
-                        <div>
-                            {post.userName}
-                        </div>
+
                         <div >
-                            {post.createdAt}
+                            {postDate}
                         </div>
                     </div>
 

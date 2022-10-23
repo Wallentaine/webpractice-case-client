@@ -4,35 +4,7 @@ export default class PostStore {
 
     constructor() {
 
-        this._posts = [
-            {
-                id: 1,
-                img: '',
-                title: 'Хорошая новость',
-                userName: 'Елена Головач',
-                text: 'Стипендия выплачивается теперь независисмо от успеваемости',
-                type: 'Социальная жизнь',
-                createdAt: '21.12.1488'
-            },
-            {
-                id: 2,
-                img: '',
-                title: 'Плохая новость',
-                userName: 'Яков Лава',
-                text: 'Люди с тройками отчислены к хуям собачьим',
-                type: 'Учебные новости',
-                createdAt: '21.12.1488'
-            },
-            {
-                id: 3,
-                img: '',
-                title: 'Нейтральная новость',
-                userName: 'Валерия Язагит',
-                text: '',
-                type: 'Жизнь вуза',
-                createdAt: '21.12.1488'
-            },
-        ]
+        this._posts = []
 
         this.todayPosts = [
             {
