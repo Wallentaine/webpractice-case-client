@@ -28,10 +28,18 @@ export const publicRoutes = [
         path: REGISTRATION_ROUTE,
         Component: RegistrationPage
     },
+
+]
+
+export const authRoutes = [
     {
         path: SCHEDULE_ROUTE,
         Component: SchedulePage
     },
+
+]
+
+export const adminRoutes = [
     {
         path: USER_ROUTE,
         Component: UserPage
@@ -44,10 +52,6 @@ export const publicRoutes = [
         path: CREATE_ARTICLE_ROUTE,
         Component: CreateArticlePage
     },
-]
-
-export const authRoutes = [
-
 ]
 
 

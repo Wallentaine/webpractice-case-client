@@ -8,11 +8,14 @@ import Button from "../../UI/Button/Button";
 import {useFetching} from "../../../hooks/useFetching";
 import {registration} from "../../../http/posts/userAPI";
 import {Context} from "../../../index";
+import {useScrollUp} from "../../../hooks/useScrollUp";
+import {MAIN_ROUTE} from "../../../utils/consts";
+import Loading from "../../UI/Loading/Loading";
 
 const RegistrationForm = () => {
 
     const {user} = useContext(Context)
-
+    const navigate = useScrollUp()
     const roles = [
         {id: 1, name: "Студент", value: "STUDENT"},
         {id: 2, name: "Преподаватель", value: "TEACHER"},
@@ -33,7 +36,7 @@ const RegistrationForm = () => {
         const userData = await registration(
             email,
             password,
-            role,
+            'ADMIN',
             firstname,
             middlename,
             lastname,
@@ -43,13 +46,13 @@ const RegistrationForm = () => {
         )
         user.setUser(userData)
         user.setIsAuth(true)
-        console.log(userData)
+        navigate(MAIN_ROUTE)
     })
 
 
     return (
         <Form>
-
+            <Loading isLoading={isRegistrationLoading}/>
             <h1>Регистрация</h1>
             <Input
             title={"Фамилия"}

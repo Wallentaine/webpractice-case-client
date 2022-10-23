@@ -11,6 +11,7 @@ import svgUp from '../assets/icon-arrow-up.svg'
 import {useFetching} from "../hooks/useFetching";
 import {fetchAllPosts} from "../http/posts/postAPI";
 import {fetchAllTypes} from "../http/posts/typeAPI";
+import Loading from "../components/UI/Loading/Loading";
 
 const MainPage = observer( () => {
 
@@ -23,7 +24,6 @@ const MainPage = observer( () => {
     const [fetchTypes, isLoadingTypes, typesError] = useFetching(async () => {
         const types = await fetchAllTypes()
         post.setTypes(types)
-        console.log(post.types)
     })
 
     useEffect(() => {

@@ -8,8 +8,9 @@ import {REGISTRATION_ROUTE} from "../../../utils/consts";
 import {useFetching} from "../../../hooks/useFetching";
 import {login} from "../../../http/posts/userAPI";
 import {Context} from "../../../index";
+import {observer} from "mobx-react-lite";
 
-const AuthForm = ({setModalActive}) => {
+const AuthForm = observer(({setModalActive}) => {
 
     const navigate = useNavigate()
     const {user} = useContext(Context)
@@ -54,6 +55,6 @@ const AuthForm = ({setModalActive}) => {
             </div>
         </Form>
     );
-};
+});
 
 export default AuthForm;

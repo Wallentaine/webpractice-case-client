@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './TextArea.module.css'
 
-const TextArea = ({props, title, text, setText}) => {
+const TextArea = ({props, title, text, setText, style}) => {
     return (
-        <div className={classes.textAreaBlock}>
+        <div className={classes.textAreaBlock} style={style}>
             <textarea
                 className={classes.textArea}
                 {...props}

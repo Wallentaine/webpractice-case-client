@@ -1,0 +1,19 @@
+.loading{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s;
+    background: url("../../../assets/1a934a23-df16-4c55-bf6e-d1790406b2ff.jfif") no-repeat center center;
+    background-size: 60%;
+}
+
+.loading.active{
+    opacity: 1;
+    pointer-events: all;
+}
